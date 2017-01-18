@@ -150,14 +150,7 @@ public class XMSegmentedControl: UIView {
      The index of the selected segment.
      - Note: Read-only. Changing `selectedSegment` won't do anything.
      */
-    public var selectedSegment:Int = 0 {
-        didSet {
-            let totalWidth = self.frame.width
-            let tabBarSections:Int = segmentTitle.count
-            let sectionWidth = totalWidth / CGFloat(tabBarSections)
-            self.hightlightSelectedSection(sectionWidth)
-        }
-    }
+    public var selectedSegment:Int = 0
     
     /**
      Sets the font for the text displayed in the segmented control.
@@ -221,6 +214,13 @@ public class XMSegmentedControl: UIView {
     /// Function gets automatically called whenever orientation changes and when view is loaded.
     override public func layoutSubviews() {
         update()
+    }
+    
+    public func updateSelection() {
+        let totalWidth = self.frame.width
+        let tabBarSections:Int = segmentTitle.count
+        let sectionWidth = totalWidth / CGFloat(tabBarSections)
+        self.hightlightSelectedSection(sectionWidth)
     }
     
     /**
@@ -355,7 +355,7 @@ public class XMSegmentedControl: UIView {
                 button.setTitleColor(self.highlightTint, forState: .Normal)
             }
             
-        }, completion: nil)
+            }, completion: nil)
     }
     
     /**
