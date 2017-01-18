@@ -260,7 +260,7 @@ public class XMSegmentedControl: UIView {
     /**
      Adds the segments to the segmented control. It takes `starting` where you specify the starting X position for the first segment. `sections` takes the number of total segments to be added. `width` and `height` specify size constraints for the segment.
      */
-    func addSegments(startingPosition starting:CGFloat, sections:Int, width:CGFloat, height:CGFloat){
+    private func addSegments(startingPosition starting:CGFloat, sections:Int, width:CGFloat, height:CGFloat){
         for i in (0..<sections) {
             let frame = CGRect(x: starting + (CGFloat(i) * width), y: 0, width: width, height: height)
             let tab:UIButton = UIButton(type: UIButtonType.System)
